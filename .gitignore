@@ -1,0 +1,16 @@
+# macOS system files
+.DS_Store
+
+# Vim swap files
+*.swp
+*.swo
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# VSCode folder
+.vscode/
