@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Define the file paths
-input_file = 'explizite_Analyse/data/raw/scoring_run_2.csv'
-output_file = 'explizite_Analyse/data/processed/scoring_processed_run_2.csv'
+input_file = 'explicit_analysis/data/raw/scoring_run_2.csv'
+output_file = 'explicit_analysis/data/processed/scoring_processed_run_2.csv'
 
 # Load the CSV file
 df = pd.read_csv(input_file)

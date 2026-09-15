@@ -1,5 +1,4 @@
 import os
-import ipdb
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -9,11 +8,11 @@ run = 'run_2_2'
 
 def main(run):
     # 0. Create output directory if it doesn't exist
-    output_dir = f"implizite_Analyse/heatmaps/{run}"
+    output_dir = f"implicit_analysis/heatmaps/{run}"
     os.makedirs(output_dir, exist_ok=True)
 
     # 1. Read the CSV
-    df = pd.read_csv(f"implizite_Analyse/results/{run}/scoring_model_model.csv")
+    df = pd.read_csv(f"implicit_analysis/results/{run}/scoring_model_model.csv")
 
     # 2. Pivot the data so that rows = Source Model, columns = Scorer Model
     df_mean = df.pivot(index="Source Model", columns="Scorer Model", values="Score").round(0).astype(int)
@@ -74,11 +73,11 @@ def main(run):
 def main_combined(lang='en'):
     run='run_1_1'
     # 0. Create output directory if it doesn't exist
-    output_dir = f"implizite_Analyse/heatmaps/combined"
+    output_dir = f"implicit_analysis/heatmaps/combined"
     os.makedirs(output_dir, exist_ok=True)
 
     # 1. Read the CSV
-    df = pd.read_csv(f"implizite_Analyse/results/{run}/scoring_model_model.csv")
+    df = pd.read_csv(f"implicit_analysis/results/{run}/scoring_model_model.csv")
 
     # 2. Pivot the data so that rows = Source Model, columns = Scorer Model
     df_mean = df.pivot(index="Source Model", columns="Scorer Model", values="Score").round(0).astype(int)

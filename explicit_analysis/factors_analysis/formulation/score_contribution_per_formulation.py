@@ -93,6 +93,6 @@ def plot_combined_chart(csv_file, output_chart):
     print(f"Saved combined chart to {output_chart}")
 
 if __name__ == "__main__":
-    csv_file = "explizite_Analyse/data/processed/scoring_processed_combined.csv"
-    output_chart = "explizite_Analyse/factors_analysis/formulation/combined_formulation_differences.png"
+    csv_file = "explicit_analysis/data/processed/scoring_processed_combined.csv"
+    output_chart = "explicit_analysis/factors_analysis/formulation/combined_formulation_differences.png"
     plot_combined_chart(csv_file, output_chart)

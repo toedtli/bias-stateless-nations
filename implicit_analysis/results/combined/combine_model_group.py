@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
     
 # 1. Read in the two CSV files
-df1 = pd.read_csv("implizite_Analyse/results/run_1/scoring_model_group.csv")
-df2 = pd.read_csv("implizite_Analyse/results/run_2/scoring_model_group.csv")
-df3 = pd.read_csv("implizite_Analyse/results/run_3/scoring_model_group.csv")
+df1 = pd.read_csv("implicit_analysis/results/run_1/scoring_model_group.csv")
+df2 = pd.read_csv("implicit_analysis/results/run_2/scoring_model_group.csv")
+df3 = pd.read_csv("implicit_analysis/results/run_3/scoring_model_group.csv")
 
 # Concatenate the two dataframes
 df = pd.concat([df1, df2, df3], ignore_index=True)
@@ -20,7 +20,7 @@ print("Columns in concatenated df:", df.columns.tolist())
 merged_df = df.groupby(["Source Model", "Group"], as_index=False).agg({"count": "sum", "mean": "mean", "sem": "mean"})
 
 # Save the merged csv file
-output_dir = "implizite_Analyse/results/combined"
+output_dir = "implicit_analysis/results/combined"
 os.makedirs(output_dir, exist_ok=True)
 merged_csv_filename = os.path.join(output_dir, "combined_model_group.csv")
 merged_df.to_csv(merged_csv_filename, index=False)

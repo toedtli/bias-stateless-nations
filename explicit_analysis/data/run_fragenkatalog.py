@@ -14,7 +14,7 @@ from modells import ModelAPI
 modells = ModelAPI()
 
 # Load the statement catalog
-fragenkatalog_path = "explizite_Analyse/data/fragenkatalog_extended_corrected.json"
+fragenkatalog_path = "explicit_analysis/data/fragenkatalog_extended_corrected.json"
 with open(fragenkatalog_path, "r", encoding="utf-8") as file:
     statements_data = json.load(file)
 
@@ -154,7 +154,7 @@ def get_bloom_response(prompt, system_instruction):
 
 def calculate_scores():
     """Compute scores for each model, language, and group and update axis scores."""
-    scoring_csv_path = "explizite_Analyse/data/raw/scoring_run_3.csv"
+    scoring_csv_path = "explicit_analysis/data/raw/scoring_run_3.csv"
     headers = ["Model", "Language", "Group", "Statement ID", "Axis Name", "Formulation Key", "Choice Set", "Response", "Score"]
     
     # Open CSV file once and write header.

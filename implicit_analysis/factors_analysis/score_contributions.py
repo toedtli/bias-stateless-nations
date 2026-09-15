@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 run = 'combined'
 # Load the CSV file (adjust the path if necessary)
-csv_file = f"implizite_Analyse/data/scoring_processed/scoring_processed_{run}.csv"
-save_dir = f"implizite_Analyse/factors_analysis/{run}"
+csv_file = f"implicit_analysis/data/scoring_processed/scoring_processed_{run}.csv"
+save_dir = f"implicit_analysis/factors_analysis/{run}"
 
 df = pd.read_csv(csv_file)
 

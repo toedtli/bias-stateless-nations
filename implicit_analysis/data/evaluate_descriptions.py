@@ -12,7 +12,7 @@ from modells import ModelAPI
 modells = ModelAPI()
 
 # Base directory containing model folders
-base_directory = "implizite_Analyse/data/scoring_raw"
+base_directory = "implicit_analysis/data/scoring_raw"
 
 # Define the path to the file
 scoring_csv_path = os.path.join(base_directory, "scoring_raw_run_2_3.csv")
@@ -29,7 +29,7 @@ with open(scoring_csv_path, 'w') as file:
     file.write("Scorer Model,Source Model,Group,Language,Question ID,Choice Set,Model Response,Score\n")
 
 # File containing all descriptions
-descriptions_csv_path = os.path.join("implizite_Analyse/data/descriptions_2/all_descriptions.csv")
+descriptions_csv_path = os.path.join("implicit_analysis/data/descriptions_2/all_descriptions.csv")
 if not os.path.exists(descriptions_csv_path):
     raise FileNotFoundError(f"Aggregierte Datei nicht gefunden: {descriptions_csv_path}")
 

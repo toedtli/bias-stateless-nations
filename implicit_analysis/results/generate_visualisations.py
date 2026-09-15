@@ -18,7 +18,7 @@ def create_bar_chart(df, index_col, columns_col, value_col, title, xlabel, ylabe
 
 def main():
     # Load the CSV file; adjust the path if needed
-    df = pd.read_csv("implizite_Analyse/results/run_1/scoring_model_group.csv")
+    df = pd.read_csv("implicit_analysis/results/run_1/scoring_model_group.csv")
     
     # Create bar chart: Model Scores by Group
     create_bar_chart(
@@ -30,7 +30,7 @@ def main():
         xlabel="Group",
         ylabel="Score",
         legend_title="Model",
-        output_path="implizite_Analyse/results/run_1/model_scores_by_group.png"
+        output_path="implicit_analysis/results/run_1/model_scores_by_group.png"
     )
     
     # Create bar chart: Group Scores by Model
@@ -43,7 +43,7 @@ def main():
         xlabel="Source Model",
         ylabel="Score",
         legend_title="Group",
-        output_path="implizite_Analyse/results/run_1/group_scores_by_model.png"
+        output_path="implicit_analysis/results/run_1/group_scores_by_model.png"
     )
 
 if __name__ == "__main__":

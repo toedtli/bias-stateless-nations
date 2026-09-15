@@ -168,6 +168,6 @@ def create_charts_from_csv(csv_file, output_folder):
 
 if __name__ == "__main__":
     create_charts_from_csv(
-        csv_file="explizite_Analyse/data/processed/scoring_processed_combined.csv",
-        output_folder="explizite_Analyse/factors_analysis"
+        csv_file="explicit_analysis/data/processed/scoring_processed_combined.csv",
+        output_folder="explicit_analysis/factors_analysis"
     )

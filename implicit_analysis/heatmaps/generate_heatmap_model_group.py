@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 run = 'run_2_3'
 
 # 0. Create output directory if it doesn't exist
-output_dir = f"implizite_Analyse/heatmaps/{run}"
+output_dir = f"implicit_analysis/heatmaps/{run}"
 os.makedirs(output_dir, exist_ok=True)
 
 # 1. Read the CSV
-df = pd.read_csv(f"implizite_Analyse/results/{run}/scoring_model_group.csv")
+df = pd.read_csv(f"implicit_analysis/results/{run}/scoring_model_group.csv")
 
 # 2. Pivot the data so that rows = Scorer Model, columns = Source Model
 df_mean = df.pivot(index="Source Model", columns="Group", values="mean").round(0).astype(int)

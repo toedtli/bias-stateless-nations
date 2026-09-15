@@ -140,10 +140,10 @@ def plot_radar_charts_single_figure(axis_scores, axis_names, models, groups, out
 
 
 def main():
-    csv_path = "explizite_Analyse/results/results_combined/scoring_combined.csv"  # Adjust path if needed
+    csv_path = "explicit_analysis/results/results_combined/scoring_combined.csv"  # Adjust path if needed
     axis_scores, axis_names, models, groups = load_scores(csv_path)
     plot_radar_charts_single_figure(axis_scores, axis_names, models, groups, 
-                                    output_folder="explizite_Analyse/radar_charts")
+                                    output_folder="explicit_analysis/radar_charts")
 
 
 if __name__ == "__main__":

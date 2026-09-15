@@ -7,7 +7,7 @@ import seaborn as sns  # For seaborn-based heatmaps
 def create_axis_heatmaps():
     run = 'run_3'
     # Path to the input CSV file
-    input_csv = f"explizite_Analyse/results/results_{run}/results_{run}.csv"
+    input_csv = f"explicit_analysis/results/results_{run}/results_{run}.csv"
     
     # Read the CSV file
     df = pd.read_csv(input_csv)
@@ -23,7 +23,7 @@ def create_axis_heatmaps():
             raise ValueError(f"The CSV file must contain a '{col}' column.")
     
     # Create output directories
-    output_dir = f"explizite_Analyse/results/results_{run}"
+    output_dir = f"explicit_analysis/results/results_{run}"
     output_dir_heatmaps = os.path.join(output_dir, f"heatmaps_{run}")
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(output_dir_heatmaps, exist_ok=True)

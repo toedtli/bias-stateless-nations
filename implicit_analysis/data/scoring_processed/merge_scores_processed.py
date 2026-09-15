@@ -3,12 +3,12 @@ import os
 
 # Define file paths
 file_paths = [
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_1_1.csv",
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_1_2.csv",
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_1_3.csv",
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_2_1.csv",
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_2_2.csv",
-    "implizite_Analyse/data/scoring_processed/scoring_processed_run_2_3.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_1_1.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_1_2.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_1_3.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_2_1.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_2_2.csv",
+    "implicit_analysis/data/scoring_processed/scoring_processed_run_2_3.csv",
 ]
 
 # Load and concatenate CSV files
@@ -24,7 +24,7 @@ if dfs:
     concatenated_df = pd.concat(dfs, ignore_index=True)
     
     # Save concatenated CSV
-    output_path = "implizite_Analyse/data/scoring_processed/scoring_processed_combined.csv"
+    output_path = "implicit_analysis/data/scoring_processed/scoring_processed_combined.csv"
     concatenated_df.to_csv(output_path, index=False)
     print(f"Concatenated CSV saved to {output_path}")
 else:

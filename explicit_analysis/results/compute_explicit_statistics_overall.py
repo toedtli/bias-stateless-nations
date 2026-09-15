@@ -8,15 +8,15 @@ import numpy as np
 sns.set(style="whitegrid")
 
 # Define the output directory and ensure it exists
-output_dir = "explizite_Analyse/results/"
+output_dir = "explicit_analysis/results/"
 os.makedirs(output_dir, exist_ok=True)
 
 # Load the CSV data
-df = pd.read_csv("explizite_Analyse/data/processed/scoring_processed_run_3.csv")
+df = pd.read_csv("explicit_analysis/data/processed/scoring_processed_run_3.csv")
 
 
 def compute_statistics(csv_path, 
-                       output_stats_csv="explizite_Analyse/results/results_run_3/results_run_3.csv"):
+                       output_stats_csv="explicit_analysis/results/results_run_3/results_run_3.csv"):
 
     df = pd.read_csv(csv_path)
     # Mapping von englischen zu deutschen Gruppennamen
@@ -69,7 +69,7 @@ def compute_statistics(csv_path,
 
 def main():
     # Adjust the path to your CSV file if needed.
-    csv_path = "explizite_Analyse/data/processed/scoring_processed_run_3.csv"
+    csv_path = "explicit_analysis/data/processed/scoring_processed_run_3.csv"
     stats_df, df = compute_statistics(csv_path)
 
 if __name__ == "__main__":

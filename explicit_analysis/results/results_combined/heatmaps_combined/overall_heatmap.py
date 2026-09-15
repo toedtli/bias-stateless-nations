@@ -94,6 +94,6 @@ def generate_heatmap(input_csv, output_dir):
     print(f"Heatmap saved to {output_path}")
 
 if __name__ == "__main__":
-    input_csv = "explizite_Analyse/results/results_combined/scoring_combined.csv"  # Update if needed
-    output_dir = "explizite_Analyse/results/results_combined/heatmaps_combined"
+    input_csv = "explicit_analysis/results/results_combined/scoring_combined.csv"  # Update if needed
+    output_dir = "explicit_analysis/results/results_combined/heatmaps_combined"
     generate_heatmap(input_csv, output_dir)

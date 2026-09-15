@@ -18,9 +18,9 @@ def extract_mean(cell):
 
 def main():
     # 1. Read in the three CSV files
-    df1 = pd.read_csv("explizite_Analyse/results/results_run_1/results_run_1.csv")
-    df2 = pd.read_csv("explizite_Analyse/results/results_run_2/results_run_2.csv")
-    df3 = pd.read_csv("explizite_Analyse/results/results_run_3/results_run_3.csv")
+    df1 = pd.read_csv("explicit_analysis/results/results_run_1/results_run_1.csv")
+    df2 = pd.read_csv("explicit_analysis/results/results_run_2/results_run_2.csv")
+    df3 = pd.read_csv("explicit_analysis/results/results_run_3/results_run_3.csv")
 
     # Concatenate the dataframes
     df = pd.concat([df1, df2, df3], ignore_index=True)
@@ -38,7 +38,7 @@ def main():
     merged_df = df.groupby(["Model", "Group", "Axis Name"], as_index=False).agg({"mean": "mean", "SEM": "mean", "count": "sum"})
 
     # Save the merged csv file
-    output_dir = "explizite_Analyse/results/results_combined"
+    output_dir = "explicit_analysis/results/results_combined"
     os.makedirs(output_dir, exist_ok=True)
     merged_csv_filename = os.path.join(output_dir, "scoring_combined.csv")
     merged_df.to_csv(merged_csv_filename, index=False)
