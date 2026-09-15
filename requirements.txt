@@ -1,0 +1,18 @@
+# Analysis, aggregation and validation.
+# Versions as used in the environment in which the analyses were run.
+pandas==2.3.3
+numpy==2.3.4
+matplotlib==3.10.6
+seaborn==0.13.2
+scipy==1.16.3
+statsmodels==0.14.6
+simpledorff==0.0.2
+openpyxl==3.1.5
+requests==2.32.5
+
+# Data collection only (modells.py).
+# Deliberately left unpinned: the queries were issued in March 2025 and the
+# exact client versions of that environment are no longer recorded. The Qwen
+# and DeepSeek endpoints are accessed through the OpenAI-compatible client.
+openai
+google-generativeai

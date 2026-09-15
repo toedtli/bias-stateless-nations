@@ -62,7 +62,13 @@ figures/                          figures used in the paper
 
 ## Setup
 
-Requires Python 3.10+ with `openai`, `google-generativeai`, `pandas`, `numpy`, `matplotlib`, `seaborn` and `requests`. The validation notebook additionally needs `simpledorff`, `scipy` and `statsmodels`.
+Requires Python 3.10 or newer:
+
+```bash
+pip install -r requirements.txt
+```
+
+The analysis packages are pinned to the versions the results were produced with. The two API clients (`openai`, `google-generativeai`) are intentionally left unpinned — see the comments in `requirements.txt`.
 
 All API keys are read from environment variables; none are stored in this repository:
 
@@ -95,6 +101,55 @@ No sampling parameters are set in `modells.py`, so the respective provider defau
 
 ---
 
+## Execution order
+
+All commands are run from the repository root. Steps 1 of each method issue paid API calls; every later step works purely on the CSV files already contained in this repository, so the analysis can be reproduced without any API access.
+
+**Note:** most scripts carry the run identifier as a module-level constant near the top of the file (for example `run = 'run_2_2'`, or the output filename in `run_fragenkatalog.py`). Reproducing all runs means editing that constant and re-running the script once per run.
+
+### Method A — explicit consent analysis
+
+```bash
+python explicit_analysis/data/run_fragenkatalog.py                    # 1. query the models -> data/raw/scoring_run_N.csv
+python explicit_analysis/data/processed/update_scoring.py             # 2. post-process    -> data/processed/scoring_processed_run_N.csv
+python explicit_analysis/data/processed/merge_runs.py                 # 3. merge runs 1-3  -> data/processed/scoring_processed_combined.csv
+python explicit_analysis/results/compute_explicit_statistics_overall.py   # 4. per-run statistics -> results/results_run_N/
+python explicit_analysis/results/generate_axis_stats.py               # 5. per-axis heatmaps
+python explicit_analysis/results/results_combined/combine_runs.py     # 6. combine runs    -> results/results_combined/
+python explicit_analysis/results/results_combined/heatmaps_combined/overall_heatmap.py   # 7. overall heatmap
+python explicit_analysis/radar_charts/create_radar_chart_overall.py   # 8. radar charts
+python explicit_analysis/factors_analysis/score_contribution.py       # 9. factor contributions
+python explicit_analysis/factors_analysis/formulation/score_contribution_per_formulation.py
+```
+
+Optional audit of missing model responses:
+
+```bash
+python explicit_analysis/missing_combinations/find_missing_combinations.py
+python explicit_analysis/missing_combinations/create_charts_missing_combination.py
+```
+
+### Method B — implicit bias analysis
+
+```bash
+python implicit_analysis/data/create_descriptions.py                  # 1. generate descriptions -> data/descriptions_2/
+python implicit_analysis/data/evaluate_descriptions.py                # 2. score them            -> data/scoring_raw/scoring_raw_run_X_Y.csv
+python implicit_analysis/data/scoring_processed/remove_dots.py        # 3. post-process          -> data/scoring_processed/
+python implicit_analysis/data/scoring_processed/merge_scores_processed.py   # 4. merge the six runs
+python implicit_analysis/results/compute_model_group.py               # 5. aggregate per group  -> results/combined/
+python implicit_analysis/results/compute_model_model.py               #    aggregate per judge
+python implicit_analysis/heatmaps/generate_heatmap_model_group.py     # 6. heatmaps
+python implicit_analysis/heatmaps/generate_heatmap_model_model.py
+python implicit_analysis/factors_analysis/score_contributions.py      # 7. factor contributions
+python implicit_analysis/results/combined/combine_model_model.py      # 8. combine per-run results
+```
+
+### Human validation and paper figures
+
+`Evaluation_Validation_V2.ipynb` computes the inter-rater agreement (Krippendorff's alpha), the Mean Bias Score and the figures of the paper. It reads three files from `Data/` — the human ratings, `all_descriptions.csv` and `scoring_processed_combined.csv` — and writes `bias_consensus_table.csv` together with the `figure4_*` files into the working directory.
+
+---
+
 ## Reproducibility
 
 The full experimental pipeline is designed for repeatability:
@@ -110,6 +165,7 @@ This design enables **longitudinal monitoring** of bias across future LLM versio
 
 - `implicit_analysis/results/combined/combine_model_group.py` and `implicit_analysis/results/generate_visualisations.py` still expect the run directories `run_1`, `run_2`, `run_3`; the implicit results use the naming `run_1_1` … `run_2_3`.
 - Some scripts write into output directories that must already exist.
+- `Evaluation_Validation_V2.ipynb` sets `base_path` to an absolute path in its first code cell and has to be pointed at the repository root before it can run elsewhere.
 
 ---
 
