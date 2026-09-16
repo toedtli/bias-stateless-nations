@@ -165,7 +165,7 @@ This design enables **longitudinal monitoring** of bias across future LLM versio
 
 - `implicit_analysis/results/combined/combine_model_group.py` and `implicit_analysis/results/generate_visualisations.py` still expect the run directories `run_1`, `run_2`, `run_3`; the implicit results use the naming `run_1_1` … `run_2_3`.
 - Some scripts write into output directories that must already exist.
-- `Evaluation_Validation_V2.ipynb` sets `base_path` to an absolute path in its first code cell and has to be pointed at the repository root before it can run elsewhere.
+- `Evaluation_Validation_V2.ipynb` resolves its input files relative to the working directory (`base_path = Path('.')`), so it has to be started from the repository root.
 
 ---
 
