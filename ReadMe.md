@@ -105,6 +105,8 @@ No sampling parameters are set in `modells.py`, so the respective provider defau
 
 All commands are run from the repository root. Steps 1 of each method issue paid API calls; every later step works purely on the CSV files already contained in this repository, so the analysis can be reproduced without any API access.
 
+> **Do not run step 1 unless you intend to collect new data.** `run_fragenkatalog.py`, `create_descriptions.py` and `evaluate_descriptions.py` write to fixed filenames and overwrite — `evaluate_descriptions.py` even deletes its target file before starting. Running them replaces the published raw data with a fresh sample from the models, and the numbers in all downstream results and figures will change. To reproduce the published results, start at step 2.
+
 **Note:** most scripts carry the run identifier as a module-level constant near the top of the file (for example `run = 'run_2_2'`, or the output filename in `run_fragenkatalog.py`). Reproducing all runs means editing that constant and re-running the script once per run.
 
 ### Method A — explicit consent analysis
